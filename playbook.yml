@@ -7,10 +7,14 @@
   tasks:
   - name: Include variables
     include_vars: vars.yml
+  - name: Find proper version
+    command: "git describe {{ branch }}"
+    register: tag
+  - debug: msg="{{ tag.stdout }}"
   - name: Run container
     docker_container:
       name: "{{ name }}"
-      image: "{{ image }}:{{ tag }}"
+      image: "{{ image }}:{{ tag.stdout }}"
       ports:
       - "{{ dest_port }}:{{ src_port }}"
       privileged: true
