@@ -1,0 +1,5 @@
+name: mynginx
+image: cristopherus/mynginx
+tag: 1.0
+src_port: 80
+dest_port: 8080

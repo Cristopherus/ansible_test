@@ -5,10 +5,12 @@
   remote_user: ubuntu
   become_method: sudo
   tasks:
+  - name: Include variables
+    include_vars: vars.yml
   - name: Run container
     docker_container:
-      name: mynginx
-      image: cristopherus/mynginx:1.0
+      name: "{{ name }}"
+      image: "{{ image }}:{{ tag }}"
       ports:
-      - 8080:80
+      - "{{ dest_port }}:{{ src_port }}"
       privileged: true
