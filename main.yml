@@ -1,9 +1,0 @@
----
-- hosts: localhost
-  become_method: sudo
-  tasks:
-  - name: Run container
-    docker_container:
-      image: cristopherus/mynginx
-      path: docker
-      state: running

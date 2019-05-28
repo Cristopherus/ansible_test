@@ -1,0 +1,14 @@
+---
+- name: My Docker Container
+  hosts: localhost
+  connection: local
+  remote_user: ubuntu
+  become_method: sudo
+  tasks:
+  - name: Run container
+    docker_container:
+      name: mynginx
+      image: cristopherus/mynginx:1.0
+      ports:
+      - 8080:80
+      privileged: true
