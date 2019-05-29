@@ -1,4 +1,4 @@
 --- 
   - name: Find proper version
-    command: "git describe {{ branch }}"
+    command: "git describe {{ branch }} --tags --always"
     register: tag_value
