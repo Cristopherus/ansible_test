@@ -1,0 +1,4 @@
+--- 
+  - name: Find proper version
+    command: "git describe {{ branch }}"
+    register: tag_value

@@ -2,4 +2,4 @@ name: mynginx
 image: cristopherus/mynginx
 src_port: 80
 dest_port: 8080
-branch: ver2
+branch: master
