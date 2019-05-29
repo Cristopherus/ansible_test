@@ -1,0 +1,20 @@
+---
+  - name: My Docker Container
+    hosts: localhost
+    connection: local
+    remote_user: root
+    become_method: sudo
+    gather_facts: false
+    vars_files:
+      - vars.yml
+    roles:
+      - find_proper_version
+    tasks:
+      - debug: msg="{{ tag_value }}"
+      - name: Run container
+        docker_container:
+          name: "{{ name }}"
+          image: "{{ image }}:{{ tag_value.stdout }}"
+          ports:
+            - "{{ dest_port }}:{{ src_port }}"
+          privileged: true
